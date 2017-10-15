@@ -3,7 +3,7 @@
         <!--面包屑导航 开始-->
 <div class="crumb_warp">
     <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-    <i class="fa fa-home"></i> <a href="{{url( 'admin/info' )}}">首页</a>  &raquo; 系统基本信息
+    <i class="fa fa-home"></i> <a href="{{url( 'admin/info' )}}">Index</a>  &raquo; System Information
 </div>
 <!--面包屑导航 结束-->
 
@@ -25,30 +25,30 @@
 
 <div class="result_wrap">
     <div class="result_title">
-        <h3>系统基本信息</h3>
+        <h3>System Information</h3>
     </div>
     <div class="result_content">
         <ul>
             <li>
-                <label>操作系统</label><span><?= PHP_OS?></span>
+                <label>Operation System</label><span><?= PHP_OS?></span>
             </li>
             <li>
-                <label>运行环境</label><span><?= $_SERVER['SERVER_SOFTWARE']?></span>
+                <label>Environment</label><span><?= $_SERVER['SERVER_SOFTWARE']?></span>
             </li>
             <li>
-                <label>PHP运行方式</label><span><?= php_sapi_name()?></span>
+                <label>PHP Configure</label><span><?= php_sapi_name()?></span>
             </li>
             <li>
-                <label>静静设计-版本</label><span>v-1.0</span>
+                <label>Version</label><span>v-1.0</span>
             </li>
             <li>
-                <label>上传附件限制</label><span><?= get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许上传附件"; ?></span>
+                <label>Maximum size of uploading</label><span><?= get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"not allowed"; ?></span>
             </li>
             <li>
-                <label>北京时间</label><span><?= date( 'Y年m月d日 H时i分s秒' )?></span>
+                <label>NZ time</label><span><?= date( 'Y-m-d H:i:s' )?></span>
             </li>
             <li>
-                <label>服务器域名/IP</label><span><?= $_SERVER['SERVER_NAME']?> [ <?= $_SERVER['SERVER_ADDR']?> ]</span>
+                <label>Server Address/IP</label><span><?= $_SERVER['SERVER_NAME']?> [ <?= $_SERVER['SERVER_ADDR']?> ]</span>
             </li>
             <li>
                 <label>Host</label><span>127.0.0.1</span>

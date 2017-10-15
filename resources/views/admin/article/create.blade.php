@@ -3,14 +3,14 @@
         <!--面包屑导航 开始-->
 <div class="crumb_warp">
     <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-    <i class="fa fa-home"></i> <a href="{{url( 'admin/info' )}}">首页</a> &raquo; 添加文章
+    <i class="fa fa-home"></i> <a href="{{url( 'admin/info' )}}">Index</a> &raquo; New Article
 </div>
 <!--面包屑导航 结束-->
 
 <!--结果集标题与导航组件 开始-->
 <div class="result_wrap">
     <div class="result_title">
-        <h3>快捷操作</h3>
+        <h3>Operations</h3>
         @if( count( $errors ) > 0 )
             <div class="mark">
                 @if( is_object( $errors ) )
@@ -25,8 +25,8 @@
     </div>
     <div class="result_content">
         <div class="short_wrap">
-            <a href="{{url( 'admin/article/create' )}}"><i class="fa fa-plus"></i>添加文章</a>
-            <a href="{{url( 'admin/article' )}}"><i class="fa fa-recycle"></i>全部文章</a>
+            <a href="{{url( 'admin/article/create' )}}"><i class="fa fa-plus"></i>Create</a>
+            <a href="{{url( 'admin/article' )}}"><i class="fa fa-recycle"></i>All</a>
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@
         <table class="add_tab">
             <tbody>
             <tr>
-                <th width="120"><i class="require">*</i>分类：</th>
+                <th width="120"><i class="require">*</i>Category：</th>
                 <td>
                     <select name="cate_id">
                         @foreach( $data as $v )
@@ -48,13 +48,13 @@
                 </td>
             </tr>
             <tr>
-                <th>文章标题：</th>
+                <th>Title：</th>
                 <td>
                     <input type="text" class="lg" name="art_title">
                 </td>
             </tr>
             <tr>
-                <th>缩略图：</th>
+                <th>Cover Photo：</th>
                 <td>
 
                     <script src="{{asset( 'resources/org/uploadify/jquery.uploadify.min.js' )}}" type="text/javascript"></script>
@@ -71,7 +71,7 @@
                                         'timestamp' : '<?php echo $timestamp;?>',
                                         '_token'     : '{{csrf_token()}}',
                                     },
-                                    'buttonText':'图片上传',
+                                    'buttonText':'Upload',
                                     'swf'      : '{{asset( 'resources/org/uploadify/uploadify.swf' )}}',
                                     'uploader' : '{{url( "admin/upload" )}}',
                                     'onUploadSuccess' : function(file, data, response) {
@@ -96,30 +96,30 @@
                 </td>
             </tr>
             <tr>
-                <th>文章标签：</th>
+                <th>Tags：</th>
                 <td>
                     <input type="text" size="50" name="art_tag">
                 </td>
             </tr>
 
             <tr>
-                <th>描述：</th>
+                <th>Description：</th>
                 <td>
                     <textarea name="art_description"></textarea>
                 </td>
             </tr>
             <tr>
-                <th>编辑：</th>
+                <th>Author：</th>
                 <td>
                     <input type="text" size="20" name="art_editor"></input>
                 </td>
             </tr>
             <tr>
-                <th>文章内容：</th>
+                <th>Text：</th>
                 <td>
                     <script type="text/javascript" charset="utf-8" src="{{asset( 'resources/org/ueditor/ueditor.config.js' )}}"></script>
                     <script type="text/javascript" charset="utf-8" src="{{asset( 'resources/org/ueditor/ueditor.all.min.js' )}}"> </script>
-                    <script type="text/javascript" charset="utf-8" src="{{asset( 'resources/org/ueditor/lang/zh-cn/zh-cn.js' )}}"></script>
+                    <script type="text/javascript" charset="utf-8" src="{{asset( 'resources/org/ueditor/lang/en/en.js' )}}"></script>
                     <script id="editor" name="art_content" type="text/plain" style="width:860px;height:400px;"></script>
                     <script>
                         var ue = UE.getEditor('editor');
@@ -136,8 +136,8 @@
             <tr>
                 <th></th>
                 <td>
-                    <input type="submit" value="提交">
-                    <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                    <input type="submit" value="Submit">
+                    <input type="button" class="back" onclick="history.go(-1)" value="Back">
                 </td>
             </tr>
             </tbody>

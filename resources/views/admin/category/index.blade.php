@@ -3,7 +3,7 @@
 <!--面包屑导航 开始-->
 <div class="crumb_warp">
     <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-    <i class="fa fa-home"></i> <a href="{{url( 'admin/info' )}}">首页</a> &raquo;  全部分类
+    <i class="fa fa-home"></i> <a href="{{url( 'admin/info' )}}">Index</a> &raquo;  Categories
 </div>
 <!--面包屑导航 结束-->
 
@@ -33,7 +33,7 @@
 <form action="#" method="post">
     <div class="result_wrap">
         <div class="result_title">
-            <h3>分类管理</h3>
+            <h3>Category Management</h3>
             @if( count( $errors ) > 0 )
                 <div class="mark">
                     @if( is_object( $errors ) )
@@ -49,8 +49,8 @@
         <!--快捷导航 开始-->
         <div class="result_content">
             <div class="short_wrap">
-                <a href="{{url( 'admin/category/create' )}}"><i class="fa fa-plus"></i>添加分类</a>
-                <a href="{{url( 'admin/category' )}}"><i class="fa fa-recycle"></i>全部分类</a>
+                <a href="{{url( 'admin/category/create' )}}"><i class="fa fa-plus"></i>New Category</a>
+                <a href="{{url( 'admin/category' )}}"><i class="fa fa-recycle"></i>Categories</a>
             </div>
         </div>
         <!--快捷导航 结束-->
@@ -60,12 +60,12 @@
         <div class="result_content">
             <table class="list_tab">
                 <tr>
-                    <th class="tc" width="5%">排序</th>
+                    <th class="tc" width="5%">Order</th>
                     <th class="tc" width="5%">ID</th>
-                    <th>分类名字</th>
-                    <th>分类标题</th>
-                    <th>查看次数</th>
-                    <th>操作</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Click through</th>
+                    <th>Operations</th>
                 </tr>
                 @foreach( $data as $vo )
                 <tr>
@@ -79,8 +79,8 @@
                     <td>{{$vo['cate_title']}}</td>
                     <td>{{$vo['cate_view']}}</td>
                     <td>
-                        <a href="{{url( 'admin/category/'.$vo->id.'/edit' )}}">修改</a>
-                        <a href="javascript:;" onclick="delCate( {{$vo->id}} )">删除</a>
+                        <a href="{{url( 'admin/category/'.$vo->id.'/edit' )}}">Edit</a>
+                        <a href="javascript:;" onclick="delCate( {{$vo->id}} )">Delete</a>
                     </td>
                 </tr>
                 @endforeach
@@ -172,8 +172,8 @@
 
     function delCate( cate_id ){
         //询问框
-        layer.confirm('你确定要删除这个分类吗？', {
-            btn: ['确定','取消'] //按钮
+        layer.confirm('Do you confirm to delete this category？', {
+            btn: ['Yes','No'] //按钮
         }, function(){
             $.post( "{{url( 'admin/category/' )}}/"+cate_id,{'_method':'delete','_token':"{{csrf_token()}}"},function(e){
 //                alert( e.msg );
