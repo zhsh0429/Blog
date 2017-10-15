@@ -33,7 +33,7 @@
 
     <div class="result_wrap">
         <div class="result_title">
-            <h3>网站系统配置</h3>
+            <h3>Website Configurations</h3>
             @if( count( $errors ) > 0 )
                 <div class="mark">
                     @if( is_object( $errors ) )
@@ -49,8 +49,8 @@
         <!--快捷导航 开始-->
         <div class="result_content">
             <div class="short_wrap">
-                <a href="{{url( 'admin/config/create' )}}"><i class="fa fa-plus"></i>添加配置</a>
-                <a href="{{url( 'admin/config' )}}"><i class="fa fa-recycle"></i>全部配置</a>
+                <a href="{{url( 'admin/config/create' )}}"><i class="fa fa-plus"></i>New Configuration</a>
+                <a href="{{url( 'admin/config' )}}"><i class="fa fa-recycle"></i>Configurations</a>
             </div>
         </div>
         <!--快捷导航 结束-->
@@ -62,12 +62,12 @@
                 {{csrf_field()}}
             <table class="list_tab">
                 <tr>
-                    <th class="tc" width="5%">排序</th>
+                    <th class="tc" width="5%">Order</th>
                     <th class="tc" width="5%">ID</th>
-                    <th>名称</th>
-                    <th>标题</th>
-                    <th>内容</th>
-                    <th>操作</th>
+                    <th>Name</th>
+                    <th>Title</th>
+                    <th>Value</th>
+                    <th>Operations</th>
                 </tr>
                 @foreach( $data as $vo )
                 <tr>
@@ -86,16 +86,16 @@
                         {!!$vo['_html']!!}
                     </td>
                     <td>
-                        <a href="{{url( 'admin/config/'.$vo->id.'/edit' )}}">修改</a>
-                        <a href="javascript:;" onclick="delNav( {{$vo->id}} )">删除</a>
+                        <a href="{{url( 'admin/config/'.$vo->id.'/edit' )}}">Edit</a>
+                        <a href="javascript:;" onclick="delNav( {{$vo->id}} )">Delete</a>
                     </td>
                 </tr>
                 @endforeach
 
             </table>
             <div class="btn_group">
-                <input type="submit" value="提交">
-                <input type="button" class="back" onclick="history.go(-1)" value="返回" >
+                <input type="submit" value="Submit">
+                <input type="button" class="back" onclick="history.go(-1)" value="Back" >
             </div>
             </form>
         </div>
@@ -116,8 +116,8 @@
 
     function delNav( conf_id ){
         //询问框
-        layer.confirm('你确定要删除这个分类吗？', {
-            btn: ['确定','取消'] //按钮
+        layer.confirm('Do you confirm to delete this configuration？', {
+            btn: ['Yes','No'] //按钮
         }, function(){
             $.post( "{{url( 'admin/config/' )}}/"+conf_id,{'_method':'delete','_token':"{{csrf_token()}}"},function(e){
 //                alert( e.msg );

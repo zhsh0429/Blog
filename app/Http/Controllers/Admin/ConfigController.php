@@ -51,8 +51,8 @@ class ConfigController extends Controller
         foreach( $input['id'] as $k=>$v ){
             Config::where( 'id',$v )->update( ['conf_content'=>$input['conf_content'][$k]] );
         }
-        $this->putFile();
-        return back()->with( 'errors','配置项更新成功' );
+        $config = $this->putFile();
+        return back()->with( 'errors',$config );
     }
 
     /*
@@ -60,9 +60,10 @@ class ConfigController extends Controller
      */
     public function putFile(){
         $config = Config::pluck( 'conf_content','conf_name' )->all();
-        $path = base_path().'\config\web.php';
+        $path = base_path().'/config/web.php';
         $str = "<?php return ".var_export( $config,true ).";";
-        file_put_contents( $path,$str );
+        $result = file_put_contents( $path,$str );
+        return $result;
     }
 
     /**
